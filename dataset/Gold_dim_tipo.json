@@ -1,0 +1,25 @@
+{
+	"name": "Gold_dim_tipo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_llamadas_tigo",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GOLD"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tipo",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "GOLD",
+			"table": "DIM_TIPO"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

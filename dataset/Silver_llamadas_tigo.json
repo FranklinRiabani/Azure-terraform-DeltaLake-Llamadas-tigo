@@ -1,0 +1,53 @@
+{
+	"name": "Silver_llamadas_tigo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_llamadas_tigo",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SILVER"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "tipo",
+				"type": "varchar"
+			},
+			{
+				"name": "numero_origen",
+				"type": "varchar"
+			},
+			{
+				"name": "numero_destino",
+				"type": "varchar"
+			},
+			{
+				"name": "fecha",
+				"type": "date"
+			},
+			{
+				"name": "hora",
+				"type": "time",
+				"scale": 7
+			},
+			{
+				"name": "duracion",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "costo",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "SILVER",
+			"table": "LLAMADAS_TIGO"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

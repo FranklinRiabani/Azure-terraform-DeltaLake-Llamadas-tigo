@@ -1,0 +1,56 @@
+{
+	"name": "llamadas_tigo_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sa_llamadas_raw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BRONZE"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Detalle llamadas tigo.csv",
+				"container": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "DESCRIPCION",
+				"type": "String"
+			},
+			{
+				"name": "TIPO",
+				"type": "String"
+			},
+			{
+				"name": "NUMERO_ORIGEN",
+				"type": "String"
+			},
+			{
+				"name": "NUMERO_DESTINO",
+				"type": "String"
+			},
+			{
+				"name": "FECHA",
+				"type": "String"
+			},
+			{
+				"name": "HORA",
+				"type": "String"
+			},
+			{
+				"name": "DURACION",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

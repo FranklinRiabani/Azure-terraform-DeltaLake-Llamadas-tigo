@@ -1,0 +1,38 @@
+{
+	"name": "Gold_pl_dim_tipo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "gold_df_dim_tipo",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine",
+					"continueOnError": true
+				}
+			}
+		],
+		"folder": {
+			"name": "GOLD"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-05-19T01:56:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

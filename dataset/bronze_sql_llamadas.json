@@ -1,0 +1,49 @@
+{
+	"name": "bronze_sql_llamadas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_llamadas_tigo",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BRONZE"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "descripcion",
+				"type": "varchar"
+			},
+			{
+				"name": "tipo",
+				"type": "varchar"
+			},
+			{
+				"name": "numero_origen",
+				"type": "varchar"
+			},
+			{
+				"name": "numero_destino",
+				"type": "varchar"
+			},
+			{
+				"name": "fecha",
+				"type": "varchar"
+			},
+			{
+				"name": "hora",
+				"type": "varchar"
+			},
+			{
+				"name": "duracion",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "BRONZE",
+			"table": "LLAMADAS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

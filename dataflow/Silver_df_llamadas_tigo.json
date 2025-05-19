@@ -1,0 +1,88 @@
+{
+	"name": "Silver_df_llamadas_tigo",
+	"properties": {
+		"folder": {
+			"name": "SILVER"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "bronze_sql_llamadas",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Silver_llamadas_tigo",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "cast1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          tipo as string,",
+				"          numero_origen as string,",
+				"          numero_destino as string,",
+				"          fecha as string,",
+				"          hora as string,",
+				"          duracion as string,",
+				"          costo as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     query: 'select tipo\\n     ,numero_origen\\n     ,numero_destino\\n     ,fecha\\n     ,hora\\n     ,duracion\\n     , (duracion*3) as costo\\nfrom BRONZE.LLAMADAS',",
+				"     format: 'query') ~> source1",
+				"source1 cast(output(",
+				"          fecha as date 'dd/MM/yyyy',",
+				"          hora as timestamp 'HH:mm:ss',",
+				"          duracion as integer,",
+				"          costo as decimal(10,0)",
+				"     ),",
+				"     errors: true) ~> cast1",
+				"cast1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          tipo as string,",
+				"          numero_origen as string,",
+				"          numero_destino as string,",
+				"          fecha as date,",
+				"          hora as timestamp,",
+				"          duracion as integer,",
+				"          costo as decimal(18,0)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'allErrors',",
+				"     transactionCommit: 'single',",
+				"     reportSuccessOnError: false,",
+				"     mapColumn(",
+				"          tipo,",
+				"          numero_origen,",
+				"          numero_destino,",
+				"          fecha,",
+				"          hora,",
+				"          duracion,",
+				"          costo",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

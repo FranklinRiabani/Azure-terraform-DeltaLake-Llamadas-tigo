@@ -1,0 +1,38 @@
+{
+	"name": "Silver_pl_llamadas_tigo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Silver_df_llamadas_tigo",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine",
+					"continueOnError": true
+				}
+			}
+		],
+		"folder": {
+			"name": "SILVER"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-05-19T01:56:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,25 @@
+{
+	"name": "Gold_dim_fecha",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_llamadas_tigo",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GOLD"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "fecha",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "GOLD",
+			"table": "DIM_FECHA"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

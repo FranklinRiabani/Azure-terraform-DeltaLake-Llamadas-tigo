@@ -1,0 +1,58 @@
+{
+	"name": "Gold_hechos_llamadas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_dw_llamadas_tigo",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GOLD"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tipo",
+				"type": "varchar"
+			},
+			{
+				"name": "numero_origen",
+				"type": "varchar"
+			},
+			{
+				"name": "numero_destino",
+				"type": "varchar"
+			},
+			{
+				"name": "fecha",
+				"type": "date"
+			},
+			{
+				"name": "hora",
+				"type": "time",
+				"scale": 7
+			},
+			{
+				"name": "duracion",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "costo",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "GOLD",
+			"table": "HECHOS_LLAMADAS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
